@@ -47,32 +47,8 @@ struct DiscoverCategoriesView: View {
 	}
 }
 
-struct CategoryDetailsView: View {
-	var body: some View {
-		ScrollView {
-			ForEach(0..<5, id: \.self) { num in
-				VStack(alignment: .leading, spacing: 0) {
-					Image("art1")
-						.resizable()
-						.scaledToFill()
-					Text("Hello")
-						.font(.system(size: 12, weight: .semibold))
-						.padding()
-				}
-				.asTile()
-				.padding()
-			}
-		}
-		.navigationBarTitle("Category", displayMode: .inline)
-	}
-}
-
 struct DiscoverCategoriesView_Previews: PreviewProvider {
 	static var previews: some View {
-		NavigationView {
-			CategoryDetailsView()
-		}
-		
 		DiscoverCategoriesView()
 			.background(Color.orange)
 			.previewLayout(.sizeThatFits)
