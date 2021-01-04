@@ -56,6 +56,7 @@ struct DiscoverView: View {
 	}
 }
 
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
 	
 	static var previews: some View {
@@ -63,3 +64,4 @@ struct ContentView_Previews: PreviewProvider {
 			.previewDevice("iPhone 12 mini")
 	}
 }
+#endif

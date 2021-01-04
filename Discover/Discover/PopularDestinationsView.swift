@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct PopularDestinationsView: View {
-	
+
 	let destinations: [Destination] = [
 		Destination(name: "Paris", country: "France", imageName: "eiffel_tower"),
 		Destination(name: "Tokyo", country: "Japan", imageName: "japan"),
 		Destination(name: "New York", country: "US", imageName: "new_york"),
 	]
-	
+
 	var body: some View {
 		VStack {
 			HStack {
 				Text("Popular Destinations")
-					.font(.system(size: 14.0, weight: .semibold))
+					.font(.system(size: 14, weight: .semibold))
+
 				Spacer()
+
 				Text("See All")
-					.font(.system(size: 12.0, weight: .semibold))
+					.font(.system(size: 12, weight: .semibold))
 			}
 			.padding(.horizontal)
 			.padding(.top)
-			
+
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 14.0) {
 					ForEach(destinations, id: \.self) { destination in
@@ -35,22 +37,22 @@ struct PopularDestinationsView: View {
 								.resizable()
 								.scaledToFill()
 								.frame(width: 125, height: 125)
-								.cornerRadius(4.0)
-								.padding(.horizontal, 6.0)
-								.padding(.vertical, 6.0)
-							
+								.cornerRadius(4)
+								.padding(.horizontal, 6)
+								.padding(.vertical, 6)
+
 							Text(destination.name)
-								.font(.system(size: 12.0, weight: .semibold))
-								.padding(.horizontal, 12.0)
-							
+								.font(.system(size: 12, weight: .semibold))
+								.padding(.horizontal, 12)
+
 							Text(destination.country)
-								.font(.system(size: 12.0, weight: .semibold))
-								.padding(.horizontal, 12.0)
-								.padding(.bottom, 8.0)
+								.font(.system(size: 12, weight: .semibold))
+								.padding(.horizontal, 12)
+								.padding(.bottom, 8)
 								.foregroundColor(.gray)
 						}
-						.modifier(TileModifier())
-						.padding(.top, 4.0)
+						.asTile()
+						.padding(.top, 4)
 						.padding(.bottom)
 					}
 				}
@@ -60,14 +62,16 @@ struct PopularDestinationsView: View {
 	}
 }
 
+#if DEBUG
 struct PopularDestinationsView_Previews: PreviewProvider {
-	
+
 	static var previews: some View {
 		PopularDestinationsView()
 			.previewLayout(.sizeThatFits)
 			.previewDevice("iPhone 12 mini")
-		
+
 		DiscoverView()
 			.previewDevice("iPhone 12 mini")
 	}
 }
+#endif

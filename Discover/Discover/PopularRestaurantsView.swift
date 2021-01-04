@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct PopularRestaurantsView: View {
-	
+
 	let restaurants: [Restaurant] = [
 		Restaurant(name: "Japan's Finest Tapas", imageName: "tapas"),
 		Restaurant(name: "Bar & grill", imageName: "bar_grill")
 	]
-	
+
 	var body: some View {
 		VStack {
 			HStack {
 				Text("Popular Restaurants")
 					.font(.system(size: 14, weight: .semibold))
+
 				Spacer()
+
 				Text("See All")
 					.font(.system(size: 12, weight: .semibold))
 			}
 			.padding(.horizontal)
 			.padding(.top)
-			
+
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 14) {
 					ForEach(restaurants, id: \.self) { restaurant in
@@ -38,7 +40,7 @@ struct PopularRestaurantsView: View {
 								.cornerRadius(5)
 								.padding(.leading, 6)
 								.padding(.vertical, 6)
-							
+
 							VStack(alignment: .leading, spacing: 4) {
 								HStack {
 									Text(restaurant.name)
@@ -72,6 +74,7 @@ struct PopularRestaurantsView: View {
 	}
 }
 
+#if DEBUG
 struct PopularRestaurantsView_Previews: PreviewProvider {
 	
 	static var previews: some View {
@@ -83,3 +86,4 @@ struct PopularRestaurantsView_Previews: PreviewProvider {
 			.previewDevice("iPhone 12 mini")
 	}
 }
+#endif
