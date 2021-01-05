@@ -13,6 +13,8 @@ struct TileModifier: ViewModifier {
 		content
 			.background(Color.white)
 			.cornerRadius(5)
-			.shadow(color: Color(.sRGB, white: 0.8, opacity: 1), radius: 4, x: 0, y: 2)
+		
+			// Find a better solution to add shadow.
+//			.shadow(color: Color(.sRGB, white: 0.8, opacity: 1), radius: 4, x: 0, y: 2)
 	}
 }

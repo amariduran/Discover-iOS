@@ -27,10 +27,10 @@ struct CategoryDetailsView: View {
 				ScrollView {
 					ForEach(viewModel.places, id: \.self) { place in
 						VStack(alignment: .leading, spacing: 0) {
-							Image("art1")
+							Image(place.thumbnail)
 								.resizable()
 								.scaledToFill()
-							Text("Hello")
+							Text(place.name)
 								.font(.system(size: 12, weight: .semibold))
 								.padding()
 						}
@@ -44,23 +44,14 @@ struct CategoryDetailsView: View {
 	}
 }
 
+#if DEBUG
 struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryDetailsView()
+			Group {
+				CategoryDetailsView()
+				DiscoverView()
+			}
+			.previewDevice("iPhone 12 mini")
     }
 }
-
-struct ActivityIndicatorView: UIViewRepresentable {
-	typealias UIViewType = UIActivityIndicatorView
-	
-	func makeUIView(context: Context) -> UIActivityIndicatorView {
-		let activityIndicatorView = UIActivityIndicatorView(style: .large)
-		activityIndicatorView.startAnimating()
-		activityIndicatorView.color = .white
-		return activityIndicatorView
-	}
-	
-	func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
-		
-	}
-}
+#endif
