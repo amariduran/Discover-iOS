@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CategoryDetailsView: View {
 	
@@ -27,7 +28,7 @@ struct CategoryDetailsView: View {
 				ScrollView {
 					ForEach(viewModel.places, id: \.self) { place in
 						VStack(alignment: .leading, spacing: 0) {
-							Image(place.thumbnail)
+							KFImage.url(URL(string: place.thumbnail))
 								.resizable()
 								.scaledToFill()
 							Text(place.name)
@@ -48,7 +49,9 @@ struct CategoryDetailsView: View {
 struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
 			Group {
-				CategoryDetailsView()
+				NavigationView {
+					CategoryDetailsView()
+				}
 				DiscoverView()
 			}
 			.previewDevice("iPhone 12 mini")
