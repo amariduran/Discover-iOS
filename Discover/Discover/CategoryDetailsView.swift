@@ -10,7 +10,14 @@ import Kingfisher
 
 struct CategoryDetailsView: View {
 	
-	@ObservedObject var viewModel = CategoryDetailsViewModel()
+	let name: String
+	
+	@ObservedObject private var viewModel: CategoryDetailsViewModel
+	
+	init(name: String) {
+		self.name = name
+		self.viewModel = CategoryDetailsViewModel(name: name)
+	}
 	
 	var body: some View {
 		ZStack {
@@ -41,7 +48,7 @@ struct CategoryDetailsView: View {
 				}
 			}
 		}
-		.navigationBarTitle("Category", displayMode: .inline)
+		.navigationBarTitle(name, displayMode: .inline)
 	}
 }
 
@@ -50,7 +57,7 @@ struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
 			Group {
 				NavigationView {
-					CategoryDetailsView()
+					CategoryDetailsView(name: "Sports")
 				}
 				DiscoverView()
 			}
