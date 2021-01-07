@@ -22,19 +22,17 @@ class CategoryDetailsViewModel: ObservableObject {
 		}
 		
 		URLSession.shared.dataTask(with: url) { data, response, error in
-			if let statusCode = (response as? HTTPURLResponse)?.statusCode,
-				 statusCode >= 400 {
-				self.isLoading = false
-				return
-			}
-			
-			guard let data = data else {
-				self.isLoading = false
-				return
-			}
-					
 			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				self.isLoading = false
+				
+				if let statusCode = (response as? HTTPURLResponse)?.statusCode,
+					 statusCode >= 400 {
+					return
+				}
+				
+				guard let data = data else {
+					return
+				}
 				
 				do {
 					self.places = try JSONDecoder().decode([Place].self, from: data)
