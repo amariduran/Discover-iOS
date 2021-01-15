@@ -16,17 +16,7 @@ struct PopularRestaurantsView: View {
 
 	var body: some View {
 		VStack {
-			HStack {
-				Text("Popular Restaurants")
-					.font(.system(size: 14, weight: .semibold))
-
-				Spacer()
-
-				Text("See All")
-					.font(.system(size: 12, weight: .semibold))
-			}
-			.padding(.horizontal)
-			.padding(.top)
+			DiscoverHeaderView(title: "Popular Restaurants")
 
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 14) {

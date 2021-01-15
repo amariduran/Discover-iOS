@@ -55,11 +55,12 @@ struct TrendingCreatorsView: View {
 struct TrendingCreatorsView_Previews: PreviewProvider {
 	
 	static var previews: some View {
-		TrendingCreatorsView()
-			.previewLayout(.sizeThatFits)
-			.previewDevice("iPhone 12 mini")
-		
-		DiscoverView()
-			.previewDevice("iPhone 12 mini")
+		Group {
+			TrendingCreatorsView()
+				.previewLayout(.sizeThatFits)
+
+			DiscoverView()
+		}
+		.previewDevice("iPhone 12 mini")
 	}
 }
